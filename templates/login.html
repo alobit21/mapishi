@@ -1,0 +1,110 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styles */
+        #navigation-bar {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        #navigation-bar img {
+            height: 30px;
+            width: auto;
+        }
+        #navigation-bar .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        #navigation-bar .nav-item {
+            padding: 0 10px;
+        }
+        #login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+        }
+        #image-container,
+        #form-container {
+            flex: 1; /* Equal width for both containers */
+            max-width: 50%; /* Limit width to half of the container */
+            padding: 1px; /* Add padding for spacing */
+            margin-top:300px;
+        }
+        #image-container img {
+            max-width: 100%; /* Ensure the image doesn't exceed the container width */
+            height: 430px;; /* Allow image to adjust height */
+            margin-top:138px;
+        }
+        form {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            height:430px;
+            margin-top:138px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .log{
+            background-color:black;
+            height:222px;
+            margin-top:10px;    
+        }
+    </style>
+</head>
+<body class="bg-dark">
+    <nav id="navigation-bar" class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'logo.png' %}" alt="Logo">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products' %}">Services</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div id="login-container">
+        <div id="image-container">
+            <!-- Image goes here -->
+            <img src="{% static 'img2.jpg' %}" alt="Image">
+        </div>
+        <div id="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary mt-3">Login</button>
+                <div class="log">
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
